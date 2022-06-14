@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { ScrollContext } from './Scroll'
 
 const Masthead: React.FC = () => {
+    const [imageLoaded, setImageLoaded] = useState(false)
     const refContainer = useRef<HTMLDivElement>(null)
     const { scrollY } = useContext(ScrollContext)
 
@@ -12,14 +13,18 @@ const Masthead: React.FC = () => {
     if (elContainer) {
         progress = Math.min(1, scrollY / elContainer.clientHeight)
     }
+    const handleImageLoaded = useCallback(() => {
+        setImageLoaded(true)
+    }
+    , [])
     return (
         <div
             ref={refContainer}
             style={{
                 transform: `translateY(-${progress * 20}vh)`
             }}
-            className='sticky top-0 -z-10 min-h-screen flex flex-col items-center justify-center'>
-            <video autoPlay loop muted playsInline className='absolute w-full h-full object-cover'>
+            className='sticky top-0 flex flex-col items-center justify-center min-h-screen -z-10'>
+            <video autoPlay loop muted playsInline className='absolute object-cover w-full h-full'>
                 <source src="/back.mp4" type="video/mp4" />
             </video>
             <div className={`flex-grow-0 pt-10 translate-opacity duration-1000`}>
@@ -27,15 +32,18 @@ const Masthead: React.FC = () => {
             </div>
             <div className='p-12 font-bold text-white drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)] text-center flex-1 flex items-center justify-center flex-col'>
                 <h1 className='mb-6 text-4xl xl:text-5xl'>In Nature</h1>
-                <h2 className='mb-2 text-xl xl:text-2xl tracking-tight'>
+                <h2 className='mb-2 text-xl tracking-tight xl:text-2xl'>
                     <span>App Development,</span> <span>done right.</span>
                 </h2>
             </div>
-            <div className='flex-grow-0 pb-20 md:pb-10 translate-all duration-1000'>
+            <div className={`flex-grow-0 pb-20 duration-1000 md:pb-10 translate-all 
+            ${ imageLoaded ? 'opacity-100' : 'opacity-0' }` }>
                 <Image src="/arrow.svg"
                     width={188 / 3}
                     height={105 / 3}
-                    alt="arrow" />
+                    alt="arrow" 
+                    onLoad={handleImageLoaded}
+                    />
             </div>
         </div>
     )
