@@ -1,6 +1,8 @@
+/* eslint-disable jsx-a11y/alt-text */
 import Reac from 'react';
+import Image from 'next/image';
 import { Tile, TileBackground, TileContent, TileWrapper } from './Tile';
-import { WorkBackground, WorkContainer, WorkLeft } from './Work';
+import { WorkBackground, WorkContainer, WorkLeft, WorkRight } from './Work';
 
 
 const Works = () => (
@@ -15,8 +17,19 @@ const Works = () => (
                     <WorkContainer>
                         <WorkLeft progress={progress}>
                             <div>We built</div>
-                            <span className='text-9xl'>Foo {progress}</span>
+                            <div className='text-4xl font-semibold tracking-tight md:text-5xl'>
+                                Pink Panda&apos;s app
+                            </div>
                         </WorkLeft>
+                        <WorkRight progress={progress}>
+                            <Image 
+                                src="/i.png"
+                                layout="responsive"
+                                width={840}
+                                height={1620}
+                                alt="Pink Panda's app"
+                            />
+                        </WorkRight>
                     </WorkContainer>
                 )}></Tile>
         </TileContent>
