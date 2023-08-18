@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "pre": "npx prettier . --write",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -26,5 +27,8 @@
     "swr": "^2.2.1",
     "tailwindcss": "3.3.3",
     "typescript": "5.1.6"
+  },
+  "devDependencies": {
+    "prettier": "3.0.2"
   }
 }
