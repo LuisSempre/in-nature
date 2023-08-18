@@ -59,7 +59,8 @@ export default function Home() {
         />
       </div>
       <About />
-			<Skills />
+      <Skills />
+      <Skills />
     </main>
   );
 }
