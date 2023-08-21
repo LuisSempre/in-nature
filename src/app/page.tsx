@@ -3,6 +3,7 @@
 import Image from "next/image";
 import About from "./About";
 import Skills from "./Skills";
+import Logos from "./Logos";
 import React, { useRef, useContext } from "react";
 import { ScrollContext } from "./Scroll";
 
@@ -61,6 +62,7 @@ export default function Home() {
       <About />
       <Skills />
       <Skills />
+      <Logos />
     </main>
   );
 }

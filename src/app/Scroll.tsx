@@ -7,7 +7,7 @@ interface ScrollValue {
 }
 
 interface ScrollProps {
-	children: React.ReactNode;
+  children: React.ReactNode;
 }
 
 export const ScrollContext = React.createContext<ScrollValue>({
@@ -27,7 +27,7 @@ const Scroll: React.FC<ScrollProps> = ({ children }) => {
 
   return (
     <ScrollContext.Provider value={{ scrollY }}>
-      { children }
+      {children}
     </ScrollContext.Provider>
   );
 };
